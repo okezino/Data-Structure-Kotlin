@@ -1,3 +1,12 @@
+import MemoizationAndRecursion.fib
+import MemoizationAndRecursion.gridTravel
+import ScopeFunctionKotlin.ep
+import ScopeFunctionKotlin.okemena
+import ScopeFunctionKotlin.okezi
+import ScopeFunctionKotlin.okezino
+import ScopeFunctionKotlin.squareE
+import ScopeFunctionKotlin.squareEp
+
 fun main() {
 
     var firstTree = Node(10)
@@ -53,4 +62,32 @@ fun main() {
     println( firstStack.pop())
     println( firstStack.pop())
     println( firstStack.top?.data)
+
+
+ val nute = arrayOf("give", "me", "one","one", "grand", "today", "night")
+ val nh = nute.groupingBy { it }
+ val nop = nute.groupingBy { it }.eachCount()
+ println(nh)
+ println(nop)
+ var newCountry = Country.Builder()
+  .flagColor("Green white Green")
+  .population(12344)
+  .build()
+
+
+
+
+ var e = arrayOf("abcdde", "baccd", "eeabg")
+ println(fib(1500))
+ println(gridTravel(18, 16))
+ var a : Int? = null
+ var  b : Int? = null
+ a = b ?: 9
+
+ println(squareE())
+ println(ep)
+ println(squareEp())
+ println(okezi.toString())
+ println(okezino)
+ println(okemena.toString())
 }
