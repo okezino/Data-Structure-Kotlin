@@ -1,4 +1,14 @@
 import java.text.FieldPosition
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
+
+class  Person @JvmOverloads constructor(val name: String, val date: Date = Date()){
+    var age : Int = 0
+    private set
+
+
+}
 
 object MemoizationAndRecursion {
 
@@ -12,6 +22,7 @@ object MemoizationAndRecursion {
 
     // GridTravel
 
+        @JvmStatic
         fun gridTravel(m : Int, n:Int, hashMap: HashMap<String, Int> =  HashMap() ) : Int{
             val key = "$m,$n"
             if(key in hashMap.keys) return  hashMap[key]!!
@@ -36,6 +47,22 @@ object MemoizationAndRecursion {
             }
             return false
         }
+
+    fun shortestCombination(target : Int, arr : Array<Int>) : ArrayList<Int>?{
+        if(target == 0) return arrayListOf()
+        if(target < 0) return null
+        var shortest : ArrayList<Int>?= null
+
+        for(i in arr){
+            var rem = target - i
+               shortest  = shortestCombination(rem, arr)
+            shortest?.add(i)
+            println(shortest)
+        }
+
+        return shortest
+
+    }
 
 
 
