@@ -14,6 +14,7 @@ import java.util.*
 
 fun main() {
  println(threeSum(nums))
+ validPalindrome(s)
 }
 
 

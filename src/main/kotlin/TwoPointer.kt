@@ -3,6 +3,8 @@
  var numb = intArrayOf(2,7,11,15)
 var nums = intArrayOf(-2,0,0,2,2)
 
+ var s = "abca"
+
  /**
   * Palindrome is simple solve using the reverse method ,
   * but to analyze 2 pointer technique we will be looping through.
@@ -16,7 +18,6 @@ var nums = intArrayOf(-2,0,0,2,2)
       */
      var input = s.toLowerCase()
      var string = regex.replace(input,"")
-
      var first = 0
      var last = string.lastIndex
 
@@ -34,8 +35,27 @@ var nums = intArrayOf(-2,0,0,2,2)
  }
 
  /**
-  *
+  *This is a more complicated palindrome that creates room for one more mistake.
+  * if removing one wrong letter from a non palindrome string will make it palindrome , then return true
   */
+
+ fun validPalindrome(s: String): Boolean {
+     var first = 0
+     var last = s.lastIndex
+
+     while (first < last ){
+         if(s[first] != s[last]){
+             val firsts = s.substring(first until last)
+             val lasts = s.substring(first +1..last)
+             return firsts == firsts.reversed() || lasts == lasts.reversed()
+         }else{
+             first++
+             last--
+         }
+     }
+
+     return true
+ }
 
 fun twoSum(numbers: IntArray, target: Int): IntArray {
 
