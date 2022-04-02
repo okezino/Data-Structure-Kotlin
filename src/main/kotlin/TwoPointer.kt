@@ -1,7 +1,41 @@
 
-//var  nums = [-1,0,1,2,-1,-4]
+
  var numb = intArrayOf(2,7,11,15)
 var nums = intArrayOf(-2,0,0,2,2)
+
+ /**
+  * Palindrome is simple solve using the reverse method ,
+  * but to analyze 2 pointer technique we will be looping through.
+  */
+ fun isPalindrome(s: String): Boolean {
+     var result = true
+     var regex = Regex("[^a-z0-9]")
+
+     /**
+      * we can also use String.filter{ it.isLetterOrDigit() } in place of the regex
+      */
+     var input = s.toLowerCase()
+     var string = regex.replace(input,"")
+
+     var first = 0
+     var last = string.lastIndex
+
+     loo@while(first <= last){
+         if(string[first] != string[last]){
+             result = false
+             break@loo
+         }
+         first++
+         last--
+     }
+
+     return result
+
+ }
+
+ /**
+  *
+  */
 
 fun twoSum(numbers: IntArray, target: Int): IntArray {
 
