@@ -13,8 +13,9 @@ import ScopeFunctionKotlin.squareEp
 import java.util.*
 
 fun main() {
- println(threeSum(nums))
- validPalindrome(s)
+// println(threeSum(nums))
+// validPalindrome(s)
+ println(fourSum(su,8))
 }
 
 

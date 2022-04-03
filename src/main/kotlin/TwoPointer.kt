@@ -1,7 +1,9 @@
 
 
  var numb = intArrayOf(2,7,11,15)
-var nums = intArrayOf(-2,0,0,2,2)
+var nums = intArrayOf(-1,0,1,2,-1,-4)
+ var su = intArrayOf(0,0,0,0)
+
 
  var s = "abca"
 
@@ -64,12 +66,12 @@ fun twoSum(numbers: IntArray, target: Int): IntArray {
     var sum = numbers[first] + numbers[last]
 
     while(sum != target){
-        if(sum > target){
+        sum = if(sum > target){
             last--
-            sum = numbers[first] + numbers[last]
+            numbers[first] + numbers[last]
         }else {
             first++
-            sum = numbers[first] + numbers[last]
+            numbers[first] + numbers[last]
         }
     }
     return intArrayOf(first,last)
@@ -107,3 +109,42 @@ fun threeSum(nums: IntArray): List<List<Int>> {
     }
     return arr.toList()
 }
+
+ fun fourSum(nums: IntArray, target: Int): List<List<Int>> {
+     nums.sort()
+     var result = arrayListOf<List<Int>>()
+
+     for(i in 0..nums.lastIndex - 3){
+         if(i > 0 && nums[i] == nums[i - 1]){
+
+         }else{
+         for(j in i+1..nums.lastIndex - 2){
+
+             if(j == i + 1 && nums[j] == nums[j - 1]){
+
+             }else{
+                 var last = nums.lastIndex
+                 var first = j + 1
+                 var sum = target - nums[i] - nums[j]
+                 while (first < last){
+                     var subSum = nums[first] + nums[last]
+                     if(subSum > sum){
+                         last--
+                     }else if(subSum < sum){
+                         first++
+                     }else {
+                         result.add(arrayListOf(nums[i],nums[j],nums[first],nums[last]))
+                         while (first < last && nums[last - 1] == nums[last]) last--
+                         while (first < last && nums[first + 1] == nums[first]) first++
+                         last--
+                         first++
+                     }
+                 }
+
+             }}
+         }
+     }
+
+     return result.toList()
+
+ }
