@@ -148,3 +148,8 @@ fun threeSum(nums: IntArray): List<List<Int>> {
      return result.toList()
 
  }
+
+
+ fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
+
+ }
