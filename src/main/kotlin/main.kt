@@ -15,7 +15,8 @@ import java.util.*
 fun main() {
 // println(threeSum(nums))
 // validPalindrome(s)
- println(fourSum(su,8))
+ //println(fourSum(su,8))
+ println(mySqrt(5))
 }
 
 
