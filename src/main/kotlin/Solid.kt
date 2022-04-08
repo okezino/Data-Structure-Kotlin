@@ -139,5 +139,28 @@ class SumCalculatorAsIntOutput(private val area: AreaSumCalculatorResolve) : Sum
      * bunch of codes
      */
 
+    interface ShapeMathInterface {
+        fun area();
+        fun volume();
+    }
+
+    /**
+     * Any class that extends this function must implement both
+     * area and volume
+     *but a 2D shape does not have a volume while a 3D shape has a volume .
+     * and the both re extending the shapeMathInterface, this will make the
+     * 2D shape implement a a function volume()  which it does not need .
+     *
+     * so the best is to separate the two expression
+     */
+
+    interface  ShapeAreaInterface{
+        fun area()
+    }
+
+    interface ShapeVolumeInterface{
+        fun volume()
+    }
+
 
 }
