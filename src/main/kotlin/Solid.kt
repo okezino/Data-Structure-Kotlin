@@ -18,15 +18,15 @@ class Solid {
       */
 }
 
-open class Shapes{
+open class Shapes(open val length: Int, open val type : String ){
 
 }
 
-data class Square(private val length: Int, val type : String ="square") : Shapes(){
+data class Square(override val length: Int, override val type : String ="square") : Shapes(length, type){
 
 }
 
-class Circle(private val radius : Int, val type : String = "circle") : Shapes(){
+class Circle(private val radius : Int, override val type : String = "circle", length: Int = 0) : Shapes(length,type){
 
 }
 
@@ -37,7 +37,7 @@ class Circle(private val radius : Int, val type : String = "circle") : Shapes(){
  * 2. if i want to change the way i want to return the getsum(), i will need to change this class
  */
 class AreaSumCalculator(private val shapes: List<Shapes>){
-    private fun sum () : Int{
+   private fun sum () : Int{
         var sum = 0
         shapes.forEach {
             if(it is Circle){
@@ -51,5 +51,49 @@ class AreaSumCalculator(private val shapes: List<Shapes>){
 
     fun getSum(){
         println("Sum of shapes ${sum()}")
+    }
+}
+
+/**
+ * Resolving the single responsibility principle we need to seperate the functions
+ */
+
+class AreaSumCalculatorResolve(private val shapes: List<Shapes>){
+    fun sum () : Int{
+        var sum = 0
+        shapes.forEach {
+            if(it is Circle){
+                sum += 90
+            }else if(it is Square){
+                sum += 10
+            }
+        }
+        return sum
+    }
+}
+
+open class  SumCalculatorOutput(private val area : AreaSumCalculatorResolve){
+   open  fun getSum(){
+        println("Sum of shapes ${area.sum()}")
+    }
+}
+
+/**
+ * 2.Open and Close Principle
+ * A class should be open for extension but close for modification
+ * modifying the function in a class will affect all the instance the class
+ * is been use. so if we want to add additional behaviour , that class should be extendable and
+ * new features can be added in the new class.
+ *
+ * GOAL
+ * the goal is to extend the a class behaviour without altering the existing behaviour of the class
+ * lets imagine we want to print a different value in the print line
+ * what we need to do is ensure that the class is open for extension and we dont want
+ * to manually modify the class
+ */
+
+class SumCalculatorAsIntOutput(private val area: AreaSumCalculatorResolve) : SumCalculatorOutput(area){
+    override fun getSum() {
+       println("Lord this is the new ${area.sum()}")
     }
 }
