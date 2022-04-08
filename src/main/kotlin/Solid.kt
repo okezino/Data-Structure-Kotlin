@@ -96,4 +96,48 @@ class SumCalculatorAsIntOutput(private val area: AreaSumCalculatorResolve) : Sum
     override fun getSum() {
        println("Lord this is the new ${area.sum()}")
     }
+
+    /**
+     * with this, the behaviour of the class has been modify through extension
+     * and not modification
+     */
+
+    /**
+     * 3.LISKOV SUBSTITUTION PRINCIPLE
+     * This states that the child class can and must always be replaceable by the
+     * parent class .
+     *
+     * remember our SumCalculatorOutput  and SumCalculatorAsIntOutput class
+      */
+
+//    class SumCalculatorStringOutput(private val area: AreaSumCalculatorResolve) : SumCalculatorOutput(area){
+//       fun customSum() {
+//            println("Lord this is the new ${area.sum()}")
+//        }
+//    }
+
+    /**
+     * Now if getSum on SumCalculatorStringOutput, it will still print
+     * getsum() from SumCalculatorOutput which will lead to bug because it
+     * does not meet the need of our extending the SumCalculatorOutput
+     *
+     * the best thing to do is override the function from the parent class
+     * and give the child class a different behaviour
+     */
+
+    class SumCalculatorStringOutput(private val area: AreaSumCalculatorResolve) : SumCalculatorOutput(area){
+        override fun getSum() {
+            println("Lord this is the new String ${area.sum()}")
+        }
+    }
+
+    /**
+     * Interface Segregation Principle
+     *
+     * A class should not be force to implement an interface its not using
+     * Therefore its better to have many interface than have one interface with
+     * bunch of codes
+     */
+
+
 }
