@@ -92,11 +92,11 @@ open class  SumCalculatorOutput(private val area : AreaSumCalculatorResolve){
  * to manually modify the class
  */
 
-class SumCalculatorAsIntOutput(private val area: AreaSumCalculatorResolve) : SumCalculatorOutput(area){
+class SumCalculatorAsIntOutput(private val area: AreaSumCalculatorResolve) : SumCalculatorOutput(area) {
     override fun getSum() {
-       println("Lord this is the new ${area.sum()}")
+        println("Lord this is the new ${area.sum()}")
     }
-
+}
     /**
      * with this, the behaviour of the class has been modify through extension
      * and not modification
@@ -162,5 +162,75 @@ class SumCalculatorAsIntOutput(private val area: AreaSumCalculatorResolve) : Sum
         fun volume()
     }
 
+    /**
+     * Dependency Inversion Principle
+     * Entities should depend on abstraction and not concretion ,
+     * High level module should not depend on low level module but
+     * should depend on abstraction
+     *
+     * GOAL
+     * Decoupling classes and using interface to smoothly switch class in constructors
+     *
+     * High Level Module : this is a class that execute a task
+     * Low Level Module : this is a tool  that is needed to execute the task
+     * Abstraction : Represent and interface that connects two classes
+     * concretion : how the Low Level Module work
+     *
+     * lets use a repository
+     *
+     */
+    class  LocalDataSource{
+        fun getAllFiles() : List<String>{
+           TODO()
+        }
+    }
+
+   class MainRepository(
+       private val localDb : LocalDataSource
+   ){
+      fun  getAllFileNumber() : List<Int>{
+          return localDb.getAllFiles().map {
+               it.toInt()
+          }
+      }
+   }
+
+/**
+ * The above implementation violate the Dependency Inversion
+ * its will be very hard to change the datasource since we have already declare
+ * the LocalDb in the repository , so lets change the implementation for the mainRepository
+ */
+
+interface DataSource{
+    fun getAllFiles() : List<String>
+}
+
+class LocalDataBase(): DataSource{
+    override fun getAllFiles(): List<String> {
+        TODO("Not yet implemented")
+    }
+}
+
+class RemoteDataSource(): DataSource{
+    override fun getAllFiles(): List<String> {
+        TODO("Not yet implemented")
+    }
 
 }
+
+class MainDataRepository(val dataSource: DataSource){
+
+}
+
+/**
+ * so with this we can create instance of the repository with
+ * either of the two data source
+ */
+
+val getRemoteRepository = MainDataRepository(RemoteDataSource())
+val getLocalRepository = MainDataRepository(LocalDataBase())
+
+
+/**
+ * This is Dependency inversion and we re good now
+ */
