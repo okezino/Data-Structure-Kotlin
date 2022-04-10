@@ -166,23 +166,3 @@ fun threeSum(nums: IntArray): List<List<Int>> {
      }
  }
 
- fun mySqrt(x: Int): Int {
-    var first = 1
-     var last = x
-
-     while (first < last){
-         var mid =  first +  (last  - first)/2
-
-         if(mid * mid == x ) return mid
-         else if(mid * mid > x){
-             last = mid
-         }else{
-             first = mid + 1
-         }
-
-     }
-
-     return  last - 1
-
-
- }
