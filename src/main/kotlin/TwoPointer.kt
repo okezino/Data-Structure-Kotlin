@@ -1,8 +1,8 @@
 
 
  var numb = intArrayOf(2,7,11,15)
-var nums = intArrayOf(-1,0,1,2,-1,-4)
- var su = intArrayOf(0,0,0,0)
+var nums = intArrayOf(2,5,6)
+ var su = intArrayOf(1,2,3,0,0,0)
 
 
  var s = "abca"
@@ -149,9 +149,21 @@ fun threeSum(nums: IntArray): List<List<Int>> {
 
  }
 
-
  fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
-
+     var firstA = m - 1
+     var firstB = n - 1
+     var lastest = nums1.lastIndex
+     while (firstB >= 0){
+         if(firstA < 0 || nums2[firstB] > nums1[firstA]){
+             nums1[lastest] = nums2[firstB]
+             firstB--
+             lastest--
+         }else{
+             nums1[lastest] = nums1[firstA]
+             firstA--
+             lastest--
+         }
+     }
  }
 
  fun mySqrt(x: Int): Int {

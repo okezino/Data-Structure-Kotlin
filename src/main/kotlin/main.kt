@@ -17,6 +17,12 @@ fun main() {
 // validPalindrome(s)
  //println(fourSum(su,8))
  println(mySqrt(5))
+// SlidingWindow().also {
+//  println(it.findAnagrams(sv,p))
+//  println(it.findAnagrams(svw,pw))
+// }
+
+ println(merge(su,3,nums,3))
 }
 
 
