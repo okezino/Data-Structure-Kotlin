@@ -21,7 +21,7 @@ fun main() {
 //  println(it.findAnagrams(svw,pw))
 // }
 BinarySearch().also {
- println(it.mySqrt(78))
+ println(it.searchRange(nu,2).toList())
 }
 // println(merge(su,3,nums,3))
 }
