@@ -66,18 +66,18 @@ class BinarySearch {
 //        }
 //
 //    }
-
-    fun searchRange(nums: IntArray, target: Int): IntArray {
-        var first = 0
-        var last = nums.lastIndex
-        while(first <= last){
-            var mid = first + (last - first)/2
-            if(target == nums[mid]){
-                
-            }else if(target > nums[mid]){
-                first = mid + 1
-            }else last = mid - 1
-        }
-        return intArrayOf(-1, -1)
-    }
+//
+//    fun searchRange(nums: IntArray, target: Int): IntArray {
+//        var first = 0
+//        var last = nums.lastIndex
+//        while(first <= last){
+//            var mid = first + (last - first)/2
+//            if(target == nums[mid]){
+//
+//            }else if(target > nums[mid]){
+//                first = mid + 1
+//            }else last = mid - 1
+//        }
+//        return intArrayOf(-1, -1)
+//    }
 }
