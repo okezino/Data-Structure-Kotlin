@@ -9,13 +9,19 @@
         var president: String?
     ) {
 
-        class Builder{
+       inner class Builder{
             var population : Int? = null
             var flagColor: String? = null
             var president: String? = null
-            fun population(value : Int)  = apply { population  = value}
-            fun flagColor(value : String) =  apply { flagColor = value }
-            fun president(value : String) =  apply { president = value }
+            fun population(value : Int) {
+                population = value
+            }
+            fun flagColor(value : String){
+                flagColor = value
+            }
+            fun president(value : String){
+                president = value
+            }
 
             fun build(): Country{
                 return Country(population,flagColor,president)
