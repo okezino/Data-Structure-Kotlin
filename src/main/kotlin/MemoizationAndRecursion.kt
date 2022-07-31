@@ -3,12 +3,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class  Person @JvmOverloads constructor(val name: String, val date: Date = Date()){
-    var age : Int = 0
-    private set
 
-
-}
 
 object MemoizationAndRecursion {
 
