@@ -21,6 +21,8 @@ fun main() {
     println(SlidingWindow.lengthOfLongestSubstring("pwwkewoptr"))
     println(SlidingWindow.lengthOfLongestSubstring("bbbbb"))
     println(SlidingWindow.lengthOfLongestSubstring("abcabcbb"))
+    SlidingWindow.totalFruit(listOf(3,3,3,1,1,3,2,1,1,2,3,3,4))
+    SlidingWindow.totalFruit(listOf(0,1,2,2))
 
 }
 

@@ -43,17 +43,19 @@ object SlidingWindow {
         var start = 0
         var end = 0
         var max = 0
-        val hash_set = mutableSetOf<Char>()
+        val hashset = mutableSetOf<Char>()
         while ( end < s.length){
-            if(!hash_set.contains(s[end])){
-               hash_set.add(s[end])
+            if(!hashset.contains(s[end])){
+               hashset.add(s[end])
                 end++
-                max = Math.max(hash_set.size, max)
+                max = Math.max(hashset.size, max)
             }else {
-                hash_set.remove(s[start])
+                hashset.remove(s[start])
                 start++
             }
         }
+
+
 
         return max
     }
@@ -72,5 +74,55 @@ object SlidingWindow {
             if(s.groupBy { it } == hashMapOfP) list.add(i)
         }
         return list.toList()
+    }
+
+    /**
+     * 904. Fruit Into Baskets
+     * Example 1:
+
+    Input: fruits = [1,2,1]
+    Output: 3
+    Explanation: We can pick from all 3 trees.
+    Example 2:
+
+    Input: fruits = [0,1,2,2]
+    Output: 3
+    Explanation: We can pick from trees [1,2,2].
+    If we had started at the first tree, we would only pick from trees [0,1].
+    Example 3:
+
+    Input: fruits = [3,3,3,1,1,3,2,1,1,2,3,3,4]
+    Output: 4
+    Explanation: We can pick from trees [2,3,2,2].
+    If we had started at the first tree, we would only pick from trees [1,2].
+     */
+
+
+    fun totalFruit(fruits: List<Int>): Int {
+        var lastFruit = -1
+        var  lastFruitCount = 0
+        var secondLastFruit = -1
+        var count = 0
+        var max = 0
+
+        for(i in fruits){
+            if(i == lastFruit || i == secondLastFruit){
+                max++
+            }else {
+              max =+  lastFruitCount + 1
+            }
+
+            if(i == lastFruit){
+                lastFruitCount++
+            }else {
+                lastFruitCount = 1
+                secondLastFruit = lastFruit
+                lastFruit = i
+
+            }
+            count = Math.max(max, count)
+        }
+        return count
+
     }
 }
